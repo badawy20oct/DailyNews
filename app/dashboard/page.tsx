@@ -1,5 +1,4 @@
 import News from "@/components/Post";
-import { NewsData } from "@/data";
 import Link from "next/link";
 import React from "react";
 import { authOptions } from "../../lib/nextAuth";
