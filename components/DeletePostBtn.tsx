@@ -10,7 +10,7 @@ function DeletePostBtn({ id }: { id: string }) {
   const router = useRouter();
 
   const deleteImage = async (publicId: string) => {
-    const res = await fetch("/api/removeImage", {
+    await fetch("/api/removeImage", {
       method: "POST",
       headers: { "Content-Type": "application.json" },
       body: JSON.stringify({ publicId }),

@@ -18,3 +18,11 @@ export type TPost = {
     name: string;
   };
 };
+
+export type CloudinaryUploadResult = {
+  event?: string;
+  info?: {
+    secure_url?: string;
+    public_id?: string;
+  };
+};

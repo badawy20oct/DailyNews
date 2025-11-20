@@ -9,7 +9,7 @@ import { useState, useRef, useEffect } from "react";
 const Navbar = () => {
   const { status, data: session } = useSession();
   const [isPopupvisiable, setisPopupvisiable] = useState(false);
-  const popupRef = useRef<null>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleclickoutside = (e: MouseEvent) => {
@@ -38,7 +38,7 @@ const Navbar = () => {
           <h1 className="text-6xl text-blue-950 font-bold my-2">DailyNews</h1>{" "}
         </Link>
         <p className="text-sm">
-          Explore World's Innovations <br /> One Byte at a Time
+          Explore World&apos;s Innovations <br /> One Byte at a Time
         </p>
       </div>
       {status === "authenticated" ? (

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { TCategory, TPost } from "@/app/types";
+import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
@@ -46,12 +47,12 @@ function EditPostForm({ post }: { post: TPost }) {
     initiateValues();
   }, [post, post.categoryName]);
 
-  const handleImageUpload = (result: any) => {
-    if (result.event === "success") {
+  const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+    if (result.event === "success" || result.info) {
       const info = result.info;
-      if (info?.secure_url && info?.public_id) {
-        setImageURL(info.secure_url);
-        setPublicID(info.public_id);
+      if (info && typeof info === 'object' && 'secure_url' in info && 'public_id' in info) {
+        setImageURL(info.secure_url as string);
+        setPublicID(info.public_id as string);
       }
     }
   };
