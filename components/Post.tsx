@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/nextAuth";
 import DeletePostBtn from "./DeletePostBtn";
 
+
 interface NewsProps {
   id: string;
   author: string;
