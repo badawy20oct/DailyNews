@@ -121,7 +121,6 @@ function CreatePostForm() {
 
   return (
     <div>
-      <h1 className="font-bold text-2xl text-blue-950 mb-3">Title : </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <input
           onChange={(e) => setTitle(e.target.value)}

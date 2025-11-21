@@ -130,12 +130,14 @@ function EditPostForm({ post }: { post: TPost }) {
         Update Post
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <h1 className="font-bold text-2xl text-blue-950 mb-3">Title : </h1>
         <input
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           placeholder="Title"
           value={title}
         />
+        <h1 className="font-bold text-2xl text-blue-950 mb-3">Content : </h1>
         <textarea
           onChange={(e) => setContent(e.target.value)}
           className="h-40"
@@ -143,6 +145,7 @@ function EditPostForm({ post }: { post: TPost }) {
           value={content}
         ></textarea>
 
+        <h1 className="font-bold text-2xl text-blue-950 mb-3">Links : </h1>
         {links.map((link, i) => (
           <div className="flex gap-2" key={i}>
             <span>
@@ -219,6 +222,7 @@ function EditPostForm({ post }: { post: TPost }) {
         </div>
 
 
+        <h1 className="font-bold text-2xl text-blue-950 mb-3">Image : </h1>
         <CldUploadButton
           uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "b2images"}
           onSuccess={handleImageUpload}
@@ -265,6 +269,7 @@ function EditPostForm({ post }: { post: TPost }) {
           focus:border-blue-900 focus:ring-2 focus:ring-blue-900/30 
           transition-all duration-200 outline-none cursor-pointer"          value={selectedCategory}
         >
+          <h1 className="font-bold text-2xl text-blue-950 mb-3">Category : </h1>
           <option value="" >Select A Category</option>
           {categories && categories.map((category) => (
             <option key={category.id} value={category.categoryName}>
