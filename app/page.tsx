@@ -1,6 +1,5 @@
-import CategoriesList from "@/components/CategoriesList";
-import News from "@/components/Post";
 import { TPost } from "@/app/types/index";
+import Post from "@/components/Post";
 
 const getPosts = async (): Promise<TPost[] | null> => {
   try {
@@ -25,10 +24,9 @@ export default async function Home() {
   const posts = await getPosts();
   return (
     <>
-      <CategoriesList />
       {posts && posts.length > 0 ? (
         posts.map((news: TPost) => (
-          <News
+          <Post
             key={news.id}
             id={news.id}
             date={news.createDate}
@@ -42,7 +40,7 @@ export default async function Home() {
           />
         ))
       ) : (
-        <div className="font-extrabold  text-6xl flex flex-row justify-center py-36 ">
+        <div className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex flex-row justify-center items-center py-16 sm:py-24 md:py-36 text-blue-950 text-center px-4">
           No News to Display
         </div>
       )}

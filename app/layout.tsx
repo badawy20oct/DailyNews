@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextAuthProvider>
-          <div className="lg:max-w-[1100px] lg:px-16 mx-auto py-8 shadow-2xl min-h-screen flex flex-col px-8">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 shadow-2xl min-h-screen flex flex-col overflow-x-hidden">
             <Navbar />
             <div className="flex-auto">
 

@@ -18,7 +18,7 @@ interface NewsProps {
   thumbnail?: string;
 }
 
-async function News({
+async function Post({
   id,
   author,
   authorEmail,
@@ -43,62 +43,73 @@ async function News({
   const formatedDate = dateObject.toLocaleDateString("en-US", options);
 
   return (
-    <div className="py-8">
-      <div>
+    <article className="py-4 sm:py-6 md:py-8 border-b border-gray-200 last:border-b-0">
+      {/* Metadata */}
+      <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
         {author ? (
           <>
-            Publisher: <span className="text-xl font-bold">{author}</span> On{" "}
-            {formatedDate}
+            Publisher: <span className="text-sm sm:text-base md:text-lg font-bold text-gray-900">{author}</span> On{" "}
+            <time dateTime={date}>{formatedDate}</time>
           </>
         ) : (
           <>
-            Published On:
-            {` ${formatedDate}`}
+            Published On: <time dateTime={date}>{formatedDate}</time>
           </>
         )}
       </div>
 
-      <div className="w-full h-150 relative mt-3 mb-[30px]">
+      {/* Image */}
+      <div className="w-full aspect-video relative mt-2 sm:mt-3 mb-4 sm:mb-6 md:mb-8 rounded-lg overflow-hidden">
         {thumbnail ? (
           <Image
             src={thumbnail}
             alt={title}
             fill
-            className="object-cover object-center rounded-md"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1100px"
+            className="object-cover object-center rounded-lg"
+            priority={false}
           />
         ) : (
           <Image
             src="/thumbnail-placeholder.jpg"
             alt={title}
             fill
-            className="object-cover object-center rounded-md"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1100px"
+            className="object-cover object-center rounded-lg"
+            priority={false}
           />
         )}
       </div>
 
+      {/* Category Badge */}
       {category && (
         <Link 
           href={`/categories/${encodeURIComponent(category)}`}
-          className="inline-block py-2 px-4 bg-slate-800 rounded-2xl text-white font-bold hover:bg-slate-700 transition-colors duration-200 mb-3"
+          className="inline-block py-1.5 sm:py-2 px-3 sm:px-4 bg-slate-800 rounded-xl sm:rounded-2xl text-white text-xs sm:text-sm md:text-base font-bold hover:bg-slate-700 transition-colors duration-200 mb-3 sm:mb-4"
         >
           {category}
         </Link>
       )}
 
-      <h2>{title}</h2>
-      <p className="content">{content}</p>
+      {/* Title */}
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold my-3 sm:my-4 break-words">{title}</h2>
+      
+      {/* Content */}
+      <p className="content text-sm sm:text-base md:text-lg leading-relaxed break-words">{content}</p>
 
-      {link && (
-        <div className="flex flex-col my-4 gap-3">
+      {/* Links */}
+      {link && link.length > 0 && (
+        <div className="flex flex-col my-4 sm:my-6 gap-2 sm:gap-3">
           {link.map((lk, i) => (
-            <div key={i} className="flex gap-2 items-center">
+            <div key={i} className="flex gap-2 sm:gap-3 items-start sm:items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5 sm:mt-0"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -107,7 +118,7 @@ async function News({
                 />
               </svg>
               <a 
-                className="link" 
+                className="link text-sm sm:text-base break-all hover:underline" 
                 href={lk} 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -118,14 +129,21 @@ async function News({
           ))}
         </div>
       )}
+      
+      {/* Edit/Delete Actions */}
       {isEditable && (
-        <div className="flex gap-3 py-2 px-4 rounded-md bg-slate-100 w-fit font-bold">
-          <Link href={`/edit-post/${id}`}>Edit</Link>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 py-2 sm:py-3 px-3 sm:px-4 rounded-md bg-slate-100 w-full sm:w-fit font-bold mt-4 sm:mt-6">
+          <Link 
+            href={`/edit-post/${id}`}
+            className="text-sm sm:text-base text-blue-700 hover:text-blue-900 hover:underline text-center sm:text-left min-h-[44px] flex items-center justify-center sm:justify-start"
+          >
+            Edit
+          </Link>
           <DeletePostBtn id={id} />
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
-export default News;
+export default Post;

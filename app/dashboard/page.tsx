@@ -34,9 +34,9 @@ async function DashboardPage() {
   }
 
   return (
-    <div>
-      <div className="relateive flex justify-center">
-        <h1 className="font-bold text-4xl p-2 text-center text-blue-950">
+    <div className="w-full">
+      <div className="flex justify-center mb-4 sm:mb-6 md:mb-8">
+        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl p-2 sm:p-4 text-center text-blue-950">
           Published
         </h1>
       </div>
@@ -57,10 +57,10 @@ async function DashboardPage() {
             />
           ))
         ) : (
-          <div className="font-extrabold  text-6xl flex flex-col justify-center items-center py-36 text-blue-950">
-            No News Published
+          <div className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex flex-col justify-center items-center py-16 sm:py-24 md:py-36 text-blue-950 text-center px-4">
+            <p className="mb-6 sm:mb-8">No News Published</p>
             <Link
-              className="font-bold text-4xl my-6 p-4 rounded-2xl bg-slate-200  underline "
+              className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl my-4 sm:my-6 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-slate-200 hover:bg-slate-300 underline transition-colors min-h-[44px] flex items-center justify-center"
               href={`/publish-news`}
             >
               Create New

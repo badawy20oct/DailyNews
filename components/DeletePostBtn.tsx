@@ -49,7 +49,10 @@ function DeletePostBtn({ id }: { id: string }) {
 
 
   return (
-    <button onClick={() => handleDelete()} className='text-red-600 cursor-pointer'>
+    <button 
+      onClick={() => handleDelete()} 
+      className='text-sm sm:text-base text-red-600 hover:text-red-800 cursor-pointer min-h-[44px] flex items-center justify-center sm:justify-start hover:underline'
+    >
       Delete
     </button>
   )

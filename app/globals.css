@@ -1,19 +1,43 @@
 @import "tailwindcss";
 
 .btn {
-  @apply bg-slate-800 text-white px-4 py-2 rounded-md font-semibold  transition;
+  @apply bg-slate-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-md sm:rounded-lg font-semibold transition-colors hover:bg-slate-700 min-h-[44px] text-sm sm:text-base;
 }
 
-h2{
-  @apply text-2xl font-bold my-4
-}
-p.content{
-  @apply leading-loose
-}
-.link{
-  @apply text-[#7563df]
+h2 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold my-3 sm:my-4 break-words;
 }
 
-input , textarea {
-  @apply py-2 px-4 border border-blue-950 rounded-md
+p.content {
+  @apply leading-relaxed text-sm sm:text-base md:text-lg;
+}
+
+.link {
+  @apply text-[#7563df] hover:underline break-all;
+}
+
+input,
+textarea {
+  @apply py-2 sm:py-2.5 px-3 sm:px-4 border border-blue-950 rounded-md sm:rounded-lg text-sm sm:text-base md:text-lg w-full;
+}
+
+/* Prevent horizontal overflow */
+body {
+  @apply overflow-x-hidden;
+}
+
+/* Ensure touch-friendly targets */
+button,
+a {
+  @apply touch-manipulation;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
